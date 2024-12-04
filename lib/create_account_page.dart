@@ -23,118 +23,120 @@ class _CreateAccountPage extends State<CreateAccountPage> {
     return SafeArea(
         child: Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Column(
-        children: [
-          _foodImageModel,
-          const SizedBox(
-            height: 20,
-          ),
-          const Text(
-            "Let's get start",
-            style: TextStyle(
-                color: Colors.orange,
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                overflow: TextOverflow.ellipsis),
-            maxLines: 1,
-          ),
-          const Text(
-            "Create an account",
-            style: TextStyle(
-                color: Colors.grey,
-                overflow: TextOverflow.ellipsis,
-                fontWeight: FontWeight.bold),
-            maxLines: 1,
-          ),
-          const SizedBox(height: 15),
-          _nameFieldModel,
-          _emailFieldModel,
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: TextField(
-              obscureText: passwordVisible,
-              textAlign: TextAlign.start,
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(10),
-                prefixIcon: const Icon(
-                  Icons.lock_outlined,
-                  color: Colors.grey,
-                ),
-                border: OutlineInputBorder(),
-                hintText: 'Password',
-                hintStyle: const TextStyle(
-                    color: Colors.grey, overflow: TextOverflow.ellipsis),
-                hintMaxLines: 1,
-                suffixIcon: IconButton(
-                  icon: Icon(passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                  onPressed: () {
-                    setState(
-                      () {
-                        passwordVisible = !passwordVisible;
-                      },
-                    );
-                  },
-                ),
-                alignLabelWithHint: false,
-              ),
-              keyboardType: TextInputType.visiblePassword,
-              textInputAction: TextInputAction.done,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _foodImageModel,
+            const SizedBox(
+              height: 20,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: TextField(
-              obscureText: passwordVisible,
-              textAlign: TextAlign.start,
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(10),
-                prefixIcon: const Icon(
-                  Icons.lock_outlined,
-                  color: Colors.grey,
-                ),
-                border: OutlineInputBorder(),
-                hintText: 'Confirm Password',
-                hintStyle: const TextStyle(
-                    color: Colors.grey, overflow: TextOverflow.ellipsis),
-                hintMaxLines: 1,
-                suffixIcon: IconButton(
-                  icon: Icon(passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                  onPressed: () {
-                    setState(
-                      () {
-                        passwordVisible = !passwordVisible;
-                      },
-                    );
-                  },
-                ),
-                alignLabelWithHint: false,
-              ),
-              keyboardType: TextInputType.visiblePassword,
-              textInputAction: TextInputAction.done,
+            const Text(
+              "Let's get start",
+              style: TextStyle(
+                  color: Colors.orange,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  overflow: TextOverflow.ellipsis),
+              maxLines: 1,
             ),
-          ),
-          _sentOTPButton,
-          const SizedBox(
-            height: 15,
-          ),
-          const Text(
-            "-- or Sign in with --",
-            style: TextStyle(
-                color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 15),
-          _facebookGoogleLogoModal,
-          const SizedBox(
-            height: 15,
-          ),
-          _signUpLink
-        ],
+            const Text(
+              "Create an account",
+              style: TextStyle(
+                  color: Colors.grey,
+                  overflow: TextOverflow.ellipsis,
+                  fontWeight: FontWeight.bold),
+              maxLines: 1,
+            ),
+            const SizedBox(height: 15),
+            _nameFieldModel,
+            _emailFieldModel,
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: TextField(
+                obscureText: passwordVisible,
+                textAlign: TextAlign.start,
+                textAlignVertical: TextAlignVertical.center,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  prefixIcon: const Icon(
+                    Icons.lock_outlined,
+                    color: Colors.grey,
+                  ),
+                  border: OutlineInputBorder(),
+                  hintText: 'Password',
+                  hintStyle: const TextStyle(
+                      color: Colors.grey, overflow: TextOverflow.ellipsis),
+                  hintMaxLines: 1,
+                  suffixIcon: IconButton(
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(
+                        () {
+                          passwordVisible = !passwordVisible;
+                        },
+                      );
+                    },
+                  ),
+                  alignLabelWithHint: false,
+                ),
+                keyboardType: TextInputType.visiblePassword,
+                textInputAction: TextInputAction.done,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: TextField(
+                obscureText: passwordVisible,
+                textAlign: TextAlign.start,
+                textAlignVertical: TextAlignVertical.center,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  prefixIcon: const Icon(
+                    Icons.lock_outlined,
+                    color: Colors.grey,
+                  ),
+                  border: OutlineInputBorder(),
+                  hintText: 'Confirm Password',
+                  hintStyle: const TextStyle(
+                      color: Colors.grey, overflow: TextOverflow.ellipsis),
+                  hintMaxLines: 1,
+                  suffixIcon: IconButton(
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(
+                        () {
+                          passwordVisible = !passwordVisible;
+                        },
+                      );
+                    },
+                  ),
+                  alignLabelWithHint: false,
+                ),
+                keyboardType: TextInputType.visiblePassword,
+                textInputAction: TextInputAction.done,
+              ),
+            ),
+            _sentOTPButton,
+            const SizedBox(
+              height: 15,
+            ),
+            const Text(
+              "-- or Sign in with --",
+              style: TextStyle(
+                  color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 15),
+            _facebookGoogleLogoModal,
+            const SizedBox(
+              height: 15,
+            ),
+            _signUpLink
+          ],
+        ),
       ),
     ));
   }

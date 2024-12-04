@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:foodpay/create_account_page.dart';
 import 'package:foodpay/foodpay.dart';
@@ -9,64 +8,63 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPage();
 }
-final Map<String, String> userData =
-  {"name": "gourav@", "password": "Qwert@123",
 
-  };
-
+final Map<String, String> userData = {
+  "name": "gourav@",
+  "password": "Qwert@123",
+};
 
 final _formKey = GlobalKey<FormState>();
-TextEditingController username=TextEditingController();
-TextEditingController password=TextEditingController();
+TextEditingController username = TextEditingController();
+TextEditingController password = TextEditingController();
+
 class _LoginPage extends State<LoginPage> {
-
-
-  TextEditingController username=TextEditingController();
-  TextEditingController password=TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
   bool? value = false;
 
   bool passwordVisible = false;
-
 
   @override
   void initState() {
     super.initState();
     passwordVisible = true;
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(children: [
-          _foodImageModel,
-          const SizedBox(
-            height: 20,
-          ),
-          const Text(
-            "Welcome Back!",
-            style: TextStyle(
-                color: Colors.orange,
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                overflow: TextOverflow.ellipsis),
-            maxLines: 1,
-          ),
-          const Text(
-            "Sign in to your existing account",
-            style: TextStyle(
-                color: Colors.grey,
-                overflow: TextOverflow.ellipsis,
-                fontWeight: FontWeight.bold),
-            maxLines: 1,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Builder(
-              builder: (context) {
+        body: SingleChildScrollView(
+          child: Column(children: [
+            _foodImageModel,
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              "Welcome Back!",
+              style: TextStyle(
+                  color: Colors.orange,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  overflow: TextOverflow.ellipsis),
+              maxLines: 1,
+            ),
+            const Text(
+              "Sign in to your existing account",
+              style: TextStyle(
+                  color: Colors.grey,
+                  overflow: TextOverflow.ellipsis,
+                  fontWeight: FontWeight.bold),
+              maxLines: 1,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: Builder(builder: (context) {
                 return Form(
                     key: _formKey,
                     child: Column(
@@ -84,37 +82,38 @@ class _LoginPage extends State<LoginPage> {
                               border: OutlineInputBorder(),
                               hintText: 'Name',
                               hintStyle: TextStyle(
-                                  color: Colors.grey, overflow: TextOverflow.ellipsis),
+                                  color: Colors.grey,
+                                  overflow: TextOverflow.ellipsis),
                             ),
                             maxLines: 1,
-                            validator: (CurrentValue){
-                                if(CurrentValue==userData['name']){
+                            validator: (CurrentValue) {
+                              if (CurrentValue == userData['name']) {
                                 return null;
-
                               }
-                              if(CurrentValue!.isEmpty){
+                              if (CurrentValue!.isEmpty) {
                                 return ("username is required");
-                              }else {
+                              } else {
                                 return "Incorrect user name";
                               }
                             },
                           ),
-                          SizedBox(height: 25,),
+                          const SizedBox(
+                            height: 25,
+                          ),
                           TextFormField(
                             controller: password,
-                            validator: (PassCurrentValue){
-                              RegExp regex=RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                            validator: (PassCurrentValue) {
+                              RegExp regex = RegExp(
+                                  r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
                               // var passNonNullValue=PassCurrentValue??"";
-                              if(PassCurrentValue!.isEmpty){
+                              if (PassCurrentValue!.isEmpty) {
                                 return ("Password is required");
                               }
-                              if(PassCurrentValue=='${userData['password']}'){
+                              if (PassCurrentValue == '${userData['password']}') {
                                 return null;
-                              }
-                              else if(PassCurrentValue.length<6){
+                              } else if (PassCurrentValue.length < 6) {
                                 return ("Password Must be more than 5 characters");
-                              }
-                              else if(!regex.hasMatch(PassCurrentValue)){
+                              } else if (!regex.hasMatch(PassCurrentValue)) {
                                 return ("Password should contain upper,lower,digit and Special character ");
                               }
                               return "Incorrect password";
@@ -131,7 +130,8 @@ class _LoginPage extends State<LoginPage> {
                               border: OutlineInputBorder(),
                               hintText: 'Password',
                               hintStyle: const TextStyle(
-                                  color: Colors.grey, overflow: TextOverflow.ellipsis),
+                                  color: Colors.grey,
+                                  overflow: TextOverflow.ellipsis),
                               hintMaxLines: 1,
                               suffixIcon: IconButton(
                                 icon: Icon(passwordVisible
@@ -139,7 +139,7 @@ class _LoginPage extends State<LoginPage> {
                                     : Icons.visibility_off),
                                 onPressed: () {
                                   setState(
-                                        () {
+                                    () {
                                       passwordVisible = !passwordVisible;
                                     },
                                   );
@@ -151,55 +151,54 @@ class _LoginPage extends State<LoginPage> {
                             textInputAction: TextInputAction.done,
                           ),
                         ]));
-              }
+              }),
             ),
-          ),
-
-          Row(
-            children: [
-              Checkbox(
-                tristate: true, // Example with tristate
-                value: value,
-                onChanged: (bool? newValue) {
-                  setState(() {
-                    value = newValue;
-                  });
-                },
-              ),
-              const Text(
-                "Remember me",
-                style: TextStyle(overflow: TextOverflow.ellipsis),
-                maxLines: 1,
-              ),
-              const Spacer(),
-              GestureDetector(
-                  onTap: () {},
-                  child: const Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Text(
-                      "Forgot Password?",
-                      style: TextStyle(overflow: TextOverflow.ellipsis),
-                      maxLines: 1,
-                    ),
-                  ))
-            ],
-          ),
-          _signInButton,
-          const SizedBox(
-            height: 15,
-          ),
-          const Text(
-            "-- or Sign in with --",
-            style: TextStyle(
-                color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 15),
-          _facebookGoogleLogoModal,
-          const SizedBox(
-            height: 15,
-          ),
-          _signUpLink
-        ]),
+            Row(
+              children: [
+                Checkbox(
+                  tristate: true, // Example with tristate
+                  value: value,
+                  onChanged: (bool? newValue) {
+                    setState(() {
+                      value = newValue;
+                    });
+                  },
+                ),
+                const Text(
+                  "Remember me",
+                  style: TextStyle(overflow: TextOverflow.ellipsis),
+                  maxLines: 1,
+                ),
+                const Spacer(),
+                GestureDetector(
+                    onTap: () {},
+                    child: const Padding(
+                      padding: EdgeInsets.only(right: 10),
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(overflow: TextOverflow.ellipsis),
+                        maxLines: 1,
+                      ),
+                    ))
+              ],
+            ),
+            _signInButton,
+            const SizedBox(
+              height: 15,
+            ),
+            const Text(
+              "-- or Sign in with --",
+              style: TextStyle(
+                  color: Colors.grey, fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 15),
+            _facebookGoogleLogoModal,
+            const SizedBox(
+              height: 15,
+            ),
+            _signUpLink
+          ]),
+        ),
       ),
     );
   }
@@ -221,33 +220,34 @@ Widget get _foodImageModel => Container(
           )),
     );
 
-
 Widget get _signInButton => SizedBox(
       height: 40,
       width: 380,
-      child: Builder(
-        builder: (context) {
-          return ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ), // Background color
-              ),
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  // TODO submit
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => FoodPay(),));
-                }
-              },
-              child: const Text(
-                "Sign in",
-                style:
-                    TextStyle(color: Colors.white, overflow: TextOverflow.ellipsis),
-                maxLines: 1,
-              ));
-        }
-      ),
+      child: Builder(builder: (context) {
+        return ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ), // Background color
+            ),
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                // TODO submit
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FoodPay(),
+                    ));
+              }
+            },
+            child: const Text(
+              "Sign in",
+              style: TextStyle(
+                  color: Colors.white, overflow: TextOverflow.ellipsis),
+              maxLines: 1,
+            ));
+      }),
     );
 
 Widget get _facebookGoogleLogoModal => Row(
@@ -312,4 +312,3 @@ Widget get _signUpLink => Row(
             ))
       ],
     );
-

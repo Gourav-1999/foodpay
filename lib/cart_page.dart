@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:foodpay/order_payment_confirm_page.dart';
 import 'package:item_count_number_button/item_count_number_button.dart';
 
 import 'custom_app_bar.dart';
@@ -49,7 +50,7 @@ class _CartState extends State<Cart> {
         distance: "25-30 min",
         price: 100));
 
-    setState(() {});
+
   }
 
   @override
@@ -73,12 +74,20 @@ class _CartState extends State<Cart> {
             ),
             _addToCartWidget,
             const SizedBox(
-              height: 50,
+              height: 60,
             ),
-            const SizedBox(
-              height: 50,
+            Row(
+              children: [
+                Text("Total",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 1,),
+                Spacer(),
+                Text("1360 Rs",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 1,),
+              ],
             ),
-            _checkBoxButton
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: _checkBoxButton,
+            )
           ],
         ),
       ),
@@ -142,7 +151,7 @@ Widget get _addToCartWidget => SizedBox(
                           ),
                           Spacer(),
                           Padding(
-                            padding: const EdgeInsets.only(right: 60),
+                            padding: const EdgeInsets.only(right: 40),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -179,6 +188,7 @@ Widget get _addToCartWidget => SizedBox(
                                     Text(cartList[index].distance),
                                   ],
                                 ),
+                                CounterButton(context,index)
                               ],
                             ),
                           )
@@ -186,14 +196,7 @@ Widget get _addToCartWidget => SizedBox(
                       ),
                     ],
                   ),
-                  Positioned(
-                    left: 260,
-                    top: 70,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CounterButton(context,index)
-                    ),
-                  )
+
                 ],
               ),
             );
@@ -211,7 +214,9 @@ Widget get _checkBoxButton => SizedBox(
                 borderRadius: BorderRadius.circular(5.0),
               ), // Background color
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => OrderPayment(),));
+            },
             child: const Text(
               "Checkout",
               style: TextStyle(
@@ -224,7 +229,7 @@ Widget get _checkBoxButton => SizedBox(
 Widget CounterButton(BuildContext context, index) {
   return CustomizableCounter(
     borderColor: Colors.white,
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 100,
     buttonText: "Add Item",
     textColor: Colors.black,
@@ -239,7 +244,7 @@ Widget CounterButton(BuildContext context, index) {
           const BoxDecoration(shape: BoxShape.circle, color: Colors.orange),
       child: const Icon(
         Icons.add,
-        size: 15,
+
         color: Colors.white,
       ),
     ),
@@ -250,7 +255,7 @@ Widget CounterButton(BuildContext context, index) {
           border: Border.all(width: 0.7, color: Colors.orange)),
       child: const Icon(
         Icons.remove,
-        size: 15,
+
         color: Colors.black,
       ),
     ),

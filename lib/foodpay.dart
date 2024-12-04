@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpay/cart_page.dart';
+import 'package:foodpay/profile_page.dart';
 
 import 'favourite.dart';
 import 'home_page.dart';
@@ -16,7 +17,7 @@ class _FoodPay extends State<FoodPay>{
     HomePage(),
     Cart(),
     Favourite(),
-    ProfilePage()
+    Profile()
   ];
 
   Widget build(BuildContext context){
@@ -116,36 +117,6 @@ class CustomNavigationBarItem extends StatelessWidget{
   }
 }
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text("Hi!"),
-    );
-  }
-}
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text("Hi!"),
-    );
-  }
-}
-// class FavPage extends StatelessWidget {
-//   const FavPage({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Text("Hi!"),
-//     );
-//   }
-// }
 
 
 

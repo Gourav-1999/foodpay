@@ -117,76 +117,78 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _appBarWidget,
-            const SizedBox(
-              height: 15,
-            ),
-            _searchBarWidget,
-            const Padding(
-              padding: EdgeInsets.only(bottom: 15, top: 15),
-              child: Text(
-                "Special offers",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    overflow: TextOverflow.ellipsis),
-                maxLines: 1,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _appBarWidget,
+              const SizedBox(
+                height: 15,
               ),
-            ),
-            const AutoScrollImage(
-              itemCount: 10, // Customize itemCount
-              itemWidth: 100.0, // Customize itemWidth
-              autoScrollDuration:
-                  Duration(seconds: 2), // Customize autoScrollDuration
-              timerInterval: Duration(seconds: 2),
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 15,top: 5),
-              child: Row(
-                children: [
-                  const Expanded(
-                    child: Text(
-                      "Food Category",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis),
-                      maxLines: 1,
+              _searchBarWidget,
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15, top: 15),
+                child: Text(
+                  "Special offers",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis),
+                  maxLines: 1,
+                ),
+              ),
+              const AutoScrollImage(
+                itemCount: 10, // Customize itemCount
+                itemWidth: 100.0, // Customize itemWidth
+                autoScrollDuration:
+                    Duration(seconds: 2), // Customize autoScrollDuration
+                timerInterval: Duration(seconds: 2),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 15,top: 5),
+                child: Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        "Food Category",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis),
+                        maxLines: 1,
+                      ),
                     ),
-                  ),
-                  GestureDetector(
-                      onTap: () {},
-                      child: const Text("View all",
-                          style: TextStyle(
-                              color: Colors.grey, fontWeight: FontWeight.bold)))
-                ],
+                    GestureDetector(
+                        onTap: () {},
+                        child: const Text("View all",
+                            style: TextStyle(
+                                color: Colors.grey, fontWeight: FontWeight.bold)))
+                  ],
+                ),
               ),
-            ),
-            _foodCategoryWidget,
-            const Padding(
-              padding: EdgeInsets.only(bottom: 15, top: 15),
-              child: Text(
-                "Nearby Restaurant",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    overflow: TextOverflow.ellipsis),
-                maxLines: 1,
+              _foodCategoryWidget,
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15, top: 15),
+                child: Text(
+                  "Nearby Restaurant",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis),
+                  maxLines: 1,
+                ),
               ),
-            ),
-            _nearByRestaurantWidget,
-            const Padding(
-              padding: EdgeInsets.only(bottom: 15, top: 15),
-              child: Text(
-                "Popular Food",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    overflow: TextOverflow.ellipsis),
-                maxLines: 1,
+              _nearByRestaurantWidget,
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15, top: 15),
+                child: Text(
+                  "Popular Food",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis),
+                  maxLines: 1,
+                ),
               ),
-            ),
-            _popularFood
-          ],
+              _popularFood
+            ],
+          ),
         ),
       ),
     ));
@@ -225,35 +227,32 @@ Widget get _appBarWidget => const Padding(
 
 Widget get _searchBarWidget => Row(
       children: [
-        Container(
-          //margin: EdgeInsets.only(left: 20),
-          width: 310,
-          decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Colors.orange),
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(5)),
-          child: const TextField(
-            textAlign: TextAlign.start,
-            textAlignVertical: TextAlignVertical.center,
-            decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(10),
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.grey,
-                ),
-                suffixIcon: Icon(
-                  Icons.mic,
-                  color: Colors.orange,
-                ),
-                border: InputBorder.none,
-                hintText: 'Search food and restaurants',
-                hintStyle: TextStyle(
-                    color: Colors.grey, overflow: TextOverflow.ellipsis)),
-            maxLines: 1,
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(width: 1, color: Colors.orange),
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(5)),
+            child: const TextField(
+              textAlign: TextAlign.start,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                  ),
+                  suffixIcon: Icon(
+                    Icons.mic,
+                    color: Colors.orange,
+                  ),
+                  border: InputBorder.none,
+                  hintText: 'Search food and restaurants',
+                  hintStyle: TextStyle(
+                      color: Colors.grey, overflow: TextOverflow.ellipsis)),
+              maxLines: 1,
+            ),
           ),
-        ),
-        const SizedBox(
-          width: 10,
         ),
         GestureDetector(
           onTap: () {},
