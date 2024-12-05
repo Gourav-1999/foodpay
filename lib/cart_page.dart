@@ -59,7 +59,7 @@ class _CartState extends State<Cart> {
     cartdataList();
     super.initState();
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -73,10 +73,8 @@ class _CartState extends State<Cart> {
               title: "Cart",
             ),
             _addToCartWidget,
-            const SizedBox(
-              height: 60,
-            ),
-            Row(
+
+            const Row(
               children: [
                 Text("Total",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),maxLines: 1,),
                 Spacer(),

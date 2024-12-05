@@ -59,11 +59,11 @@ class _OrderPaymentState extends State<OrderPayment> {
                 children: [
                   _appBar(context),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   _locationWidget,
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   const Text(
                     "Choose Payment Method",
@@ -74,14 +74,14 @@ class _OrderPaymentState extends State<OrderPayment> {
                     maxLines: 1,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 7,
                   ),
                   _choosePaymentMethod,
                   const SizedBox(
-                    height: 10,
+                    height: 7,
                   ),
                   _applyCoupon,
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: 5,),
                   const Row(
                     children: [
                       Text(
@@ -101,7 +101,7 @@ class _OrderPaymentState extends State<OrderPayment> {
                   ),
                   _billModal,
                   const SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
                   const Row(
                     children: [

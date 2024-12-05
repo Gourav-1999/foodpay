@@ -24,7 +24,7 @@ class _TrackOrderState extends State<TrackOrder> {
             child: _appBar(context),
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           _mapImageModal,
           Spacer(),

@@ -1,7 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:foodpay/about_us_page.dart';
 import 'package:foodpay/custom_app_bar.dart';
+import 'package:foodpay/edit_profile.dart';
+import 'package:foodpay/favourite.dart';
+import 'package:foodpay/help_page.dart';
+import 'package:foodpay/login_page.dart';
+import 'package:foodpay/order_history.dart';
+import 'package:foodpay/payment_details.dart';
+import 'package:foodpay/setting_page.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -9,6 +17,15 @@ class Profile extends StatefulWidget {
   @override
   State<Profile> createState() => _ProfileState();
 }
+List<Widget> pagesList = [
+  Favourite(),
+  EditProfile(),
+  OrderHistory(),
+  PaymentDetails(),
+  Settings(),
+  HelpPage(),
+  AboutUsPage()
+];
 
 List<ProfileModal> listdata = [];
 int currentIndex = 3;
@@ -67,7 +84,7 @@ class _ProfileState extends State<Profile> {
             SizedBox(
               height: 15,
             ),
-            _profileDataModal,
+            _profileDataModal(context),
           ],
         ),
       ),
@@ -105,7 +122,7 @@ Widget get _profilePhoto => Column(
       ],
     );
 
-Widget get _profileDataModal => Column(
+Widget _profileDataModal(BuildContext context) => Column(
       children: [
         ListView.builder(
             itemCount: listdata.length,
@@ -114,26 +131,29 @@ Widget get _profileDataModal => Column(
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(listdata[index].icon),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                        child: Text(
-                      listdata[index].name,
-                      style: TextStyle(overflow: TextOverflow.ellipsis),
-                      maxLines: 1,
-                    )),
-                    GestureDetector(
-                        onTap: () {},
-                        child: Icon(
-                          listdata[index].menuIcon,
-                          size: 15,
-                        ))
-                  ],
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => pagesList[index],));
+                  },
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(listdata[index].icon),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                          child: Text(
+                        listdata[index].name,
+                        style: TextStyle(overflow: TextOverflow.ellipsis),
+                        maxLines: 1,
+                      )),
+                      Icon(
+                        listdata[index].menuIcon,
+                        size: 15,
+                      )
+                    ],
+                  ),
                 ),
               );
             }),
@@ -143,7 +163,9 @@ Widget get _profileDataModal => Column(
         Padding(
           padding: const EdgeInsets.all(10),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+            },
             child: const Row(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Icon(Icons.logout),
