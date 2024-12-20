@@ -41,33 +41,15 @@ class _TrackOrderState extends State<TrackOrder> {
 Widget _appBar(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.only(top: 10),
-    child: Row(
-      children: [
-        IconButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Order(),
-                ));
-          },
-          icon: Icon(Icons.arrow_back_ios, size: 20),
+    child: Center(
+      child: const Text(
+        textAlign: TextAlign.center,
+        "Track Order",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
         ),
-
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(right: 35),
-            child: const Text(
-              textAlign: TextAlign.center,
-              "Track Order",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
-            ),
-          ),
-        )
-      ],
+      ),
     ),
   );
 }

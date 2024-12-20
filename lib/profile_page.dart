@@ -133,7 +133,13 @@ Widget _profileDataModal(BuildContext context) => Column(
                 padding: const EdgeInsets.all(10),
                 child: InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => pagesList[index],));
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                        builder: (context) => pagesList[index],
+                      ),
+                          (Route<dynamic> route) => false,
+                    );
+                    //Navigator.push(context, MaterialPageRoute(builder: (context) => pagesList[index],));
                   },
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,

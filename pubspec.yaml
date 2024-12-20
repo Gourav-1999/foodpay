@@ -43,6 +43,8 @@ dependencies:
   customizable_counter: ^1.0.4
   persistent_shopping_cart: ^0.0.7
   item_count_number_button: ^1.9.2
+  video_player: ^2.9.2
+
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +73,10 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/restaurants/
+    - assets/burgerking/
+    - assets/foodplaza/
+    - assets/kfc/
+    - assets/pizzahut/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -138,11 +138,7 @@ Widget _appBar(BuildContext context) {
       children: [
         IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Cart(),
-                ));
+            Navigator.pop(context);
           },
           icon: const Icon(Icons.arrow_back_ios, size: 20),
         ),
@@ -329,11 +325,11 @@ Widget get _confirmButton => SizedBox(
               ), // Background color
             ),
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Order(),
-                  ));
+              Navigator
+                  .of(context)
+                  .pushReplacement(new MaterialPageRoute(builder: (BuildContext context) {
+                return new Order();
+              }));
             },
             child: const Text(
               "Confirm Order",

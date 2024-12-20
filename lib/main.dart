@@ -1,5 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:foodpay/cart_page.dart';
+import 'package:foodpay/favourite.dart';
+import 'package:foodpay/home_page.dart';
+import 'package:foodpay/order_page.dart';
+import 'package:foodpay/order_payment_confirm_page.dart';
+import 'package:foodpay/payment_details.dart';
+import 'package:foodpay/profile_page.dart';
+import 'package:foodpay/track_order_page.dart';
 
 import 'package:foodpay/welcome_page.dart';
 
@@ -28,6 +36,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
+      routes: {
+
+         '/second': (context) => OrderPayment(),
+         '/third': (context) => Order(),
+         '/fourth': (context) => TrackOrder(),
+      },
       home: WelcomePage()
     );
   }

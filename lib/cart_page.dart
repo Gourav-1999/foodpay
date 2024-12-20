@@ -14,7 +14,6 @@ class Cart extends StatefulWidget {
   @override
   State<Cart> createState() => _CartState();
 }
-
 List<CartModal> cartList = [];
 int currentindex = 1;
 
@@ -59,7 +58,7 @@ class _CartState extends State<Cart> {
     cartdataList();
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -213,7 +212,7 @@ Widget get _checkBoxButton => SizedBox(
               ), // Background color
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => OrderPayment(),));
+              Navigator.pushNamed(context, '/second');
             },
             child: const Text(
               "Checkout",

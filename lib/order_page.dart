@@ -46,11 +46,7 @@ Widget _appBar(BuildContext context) {
       children: [
         IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => OrderPayment(),
-                ));
+            Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back_ios, size: 20),
         ),
@@ -84,7 +80,7 @@ Widget get _trackButton => SizedBox(
           ), // Background color
         ),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => TrackOrder(),));
+          Navigator.pushNamed(context, '/fourth');
         },
         child: const Text(
           "Track Order",
