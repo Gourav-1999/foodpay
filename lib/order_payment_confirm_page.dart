@@ -138,7 +138,11 @@ Widget _appBar(BuildContext context) {
       children: [
         IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator
+                .of(context)
+                .pushReplacement(new MaterialPageRoute(builder: (BuildContext context) {
+              return new Cart();
+            }));
           },
           icon: const Icon(Icons.arrow_back_ios, size: 20),
         ),

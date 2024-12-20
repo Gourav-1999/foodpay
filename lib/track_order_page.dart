@@ -165,7 +165,12 @@ Widget get _moreFoodButton => SizedBox(
           ), // Background color
         ),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => FoodPay(),));
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => FoodPay(),
+            ),
+                (Route<dynamic> route) => false,
+          );
         },
         child: const Text(
           "Go for more food",

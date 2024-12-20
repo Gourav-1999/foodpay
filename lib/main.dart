@@ -36,12 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      routes: {
 
-         '/second': (context) => OrderPayment(),
-         '/third': (context) => Order(),
-         '/fourth': (context) => TrackOrder(),
-      },
       home: WelcomePage()
     );
   }

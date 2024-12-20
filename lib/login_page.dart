@@ -234,11 +234,12 @@ Widget get _signInButton => SizedBox(
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 // TODO submit
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FoodPay(),
-                    ));
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => FoodPay(),
+                  ),
+                      (Route<dynamic> route) => false,
+                );
               }
             },
             child: const Text(

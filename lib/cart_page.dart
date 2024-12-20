@@ -212,7 +212,11 @@ Widget get _checkBoxButton => SizedBox(
               ), // Background color
             ),
             onPressed: () {
-              Navigator.pushNamed(context, '/second');
+              Navigator
+                  .of(context)
+                  .pushReplacement(new MaterialPageRoute(builder: (BuildContext context) {
+                return new OrderPayment();
+              }));
             },
             child: const Text(
               "Checkout",

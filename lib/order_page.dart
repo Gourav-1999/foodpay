@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:foodpay/cart_page.dart';
 import 'package:foodpay/order_payment_confirm_page.dart';
 import 'package:foodpay/track_order_page.dart';
 
@@ -42,28 +43,15 @@ class _OrderState extends State<Order> {
 Widget _appBar(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.only(top: 10),
-    child: Row(
-      children: [
-        IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios, size: 20),
+    child: Center(
+      child: const Text(
+        textAlign: TextAlign.center,
+        "Order",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
         ),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(right: 35),
-            child: const Text(
-              textAlign: TextAlign.center,
-              "Order",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
-            ),
-          ),
-        )
-      ],
+      ),
     ),
   );
 }
@@ -80,7 +68,11 @@ Widget get _trackButton => SizedBox(
           ), // Background color
         ),
         onPressed: () {
-          Navigator.pushNamed(context, '/fourth');
+          Navigator
+              .of(context)
+              .pushReplacement(new MaterialPageRoute(builder: (BuildContext context) {
+            return new TrackOrder();
+          }));
         },
         child: const Text(
           "Track Order",

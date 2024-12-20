@@ -170,7 +170,12 @@ Widget _profileDataModal(BuildContext context) => Column(
           padding: const EdgeInsets.all(10),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => LoginPage(),
+                ),
+                    (Route<dynamic> route) => false,
+              );
             },
             child: const Row(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
